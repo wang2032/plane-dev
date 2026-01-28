@@ -17,6 +17,11 @@
     "build-storybook": "storybook build"
   },
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
     "./accordion": "./dist/accordion/index.js",
     "./animated-counter": "./dist/animated-counter/index.js",
     "./avatar": "./dist/avatar/index.js",
