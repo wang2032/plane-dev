@@ -465,6 +465,25 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
         </Tooltip>
       </WithDisplayPropertiesHOC>
 
+      {/* created at */}
+      <WithDisplayPropertiesHOC
+        displayProperties={displayProperties}
+        displayPropertyKey="created_on"
+        shouldRenderProperty={(properties) => !!properties.created_on}
+      >
+        <div className="h-5 flex items-center gap-2 overflow-hidden truncate px-2.5 py-1">
+          <div className="text-caption-sm-regular text-tertiary">
+            创建于 {new Date(issue.created_at).toLocaleString("zh-CN", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit"
+            })}
+          </div>
+        </div>
+      </WithDisplayPropertiesHOC>
+
       {/* Additional Properties */}
       <WorkItemLayoutAdditionalProperties displayProperties={displayProperties} issue={issue} />
 
