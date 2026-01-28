@@ -21,7 +21,26 @@ export default defineConfig(() => ({
   build: {
     assetsInlineLimit: 0,
   },
-  plugins: [reactRouter(), tsconfigPaths({ projects: [path.resolve(__dirname, "tsconfig.json")] })],
+  plugins: [
+    reactRouter(),
+    tsconfigPaths({ projects: [path.resolve(__dirname, "tsconfig.json")] })
+  ],
+  optimizeDeps: {
+    include: [
+      "@plane/i18n",
+      "@plane/utils",
+      "@plane/constants",
+      "@plane/types",
+      "@plane/hooks",
+      "@plane/services",
+      "@plane/ui",
+      "@plane/propel",
+      "@plane/shared-state",
+      "@plane/logger",
+      "@plane/decorators",
+      "@plane/editor"
+    ],
+  },
   resolve: {
     alias: {
       // Next.js compatibility shims used within web
