@@ -136,6 +136,18 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
               </SidebarPropertyListItem>
             )}
 
+            <SidebarPropertyListItem icon={StartDatePropertyIcon} label={t("common.created_on")}>
+              <div className="px-2 text-body-xs-regular leading-5">
+                {new Date(issue.created_at).toLocaleString("zh-CN", {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit"
+                })}
+              </div>
+            </SidebarPropertyListItem>
+
             <SidebarPropertyListItem icon={StartDatePropertyIcon} label={t("common.order_by.start_date")}>
               <DateDropdown
                 placeholder={t("issue.add.start_date")}
