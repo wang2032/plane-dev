@@ -36,6 +36,19 @@ export const StateItemTitle = observer(function StateItemTitle(props: TStateItem
   const statePercentage = getStatePercentageInGroup(state.id);
   const percentage = statePercentage ? statePercentage / 100 : undefined;
 
+  // Format created date
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat("zh-CN", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(date);
+  };
+
   return (
     <div className="flex items-center gap-2 w-full justify-between">
       <div className="flex items-center gap-1 px-1">
@@ -53,6 +66,7 @@ export const StateItemTitle = observer(function StateItemTitle(props: TStateItem
         <div className="text-13 px-2 min-h-5">
           <h6 className="text-13 font-medium">{state.name}</h6>
           {shouldShowDescription && <p className="text-11 text-secondary">{state.description}</p>}
+          <p className="text-10 text-tertiary mt-0.5">创建于 {formatDate(state.created_at)}</p>
         </div>
       </div>
       {!disabled && (
