@@ -73,6 +73,9 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store CI=true pnpm install --o
 # Copy all workspace packages (some may be excluded by turbo prune but are needed)
 COPY --from=builder /app/packages ./packages
 
+# Install dependencies for copied packages
+RUN pnpm install --no-frozen-lockfile
+
 # Build all workspace packages first
 RUN pnpm turbo run build --filter="@plane/*"
 
