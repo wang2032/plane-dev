@@ -45,6 +45,10 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store CI=true pnpm install --o
 
 ENV TURBO_TELEMETRY_DISABLED=1
 
+# Build all workspace packages first
+RUN pnpm turbo run build --filter="@plane/*"
+
+# Build the live package
 RUN pnpm turbo run build --filter=live
 
 # *****************************************************************************

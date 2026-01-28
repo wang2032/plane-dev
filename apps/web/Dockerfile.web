@@ -70,6 +70,10 @@ ENV VITE_WEB_BASE_URL=$VITE_WEB_BASE_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV TURBO_TELEMETRY_DISABLED=1
 
+# Build all workspace packages first
+RUN pnpm turbo run build --filter="@plane/*"
+
+# Build the web package
 RUN pnpm turbo run build --filter=web
 
 # *****************************************************************************
