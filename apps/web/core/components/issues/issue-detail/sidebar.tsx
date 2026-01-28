@@ -137,7 +137,7 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
             )}
 
             <SidebarPropertyListItem icon={StartDatePropertyIcon} label={t("common.created_on")}>
-              <div className="px-2 text-body-xs-regular leading-5">
+              <div className="w-full text-left h-7.5 px-2 text-body-xs-regular leading-5 flex items-center">
                 {new Date(issue.created_at).toLocaleString("zh-CN", {
                   year: "numeric",
                   month: "2-digit",
